@@ -1,0 +1,3 @@
+[submodule "src/ros2_razor_imu"]
+	path = src/ros2_razor_imu
+	url = https://github.com/pokusew/ros2_razor_imu.git
