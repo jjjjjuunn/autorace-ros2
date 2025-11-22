@@ -172,7 +172,7 @@ class TunnelMission:
 def main():
     try:
         node = TunnelMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

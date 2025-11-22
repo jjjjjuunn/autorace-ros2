@@ -137,7 +137,7 @@ class LaneFollowingMission:
 def main():
     try:
         node = LaneFollowingMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

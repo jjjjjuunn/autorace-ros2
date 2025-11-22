@@ -236,7 +236,7 @@ class RoundaboutMission:
 def main():
     try:
         node = RoundaboutMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

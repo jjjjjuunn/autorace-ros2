@@ -227,7 +227,7 @@ class ParkingMission:
 def main():
     try:
         node = ParkingMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

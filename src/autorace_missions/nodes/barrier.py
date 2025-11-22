@@ -227,7 +227,7 @@ class BarrierMission:
 def main():
     try:
         node = BarrierMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

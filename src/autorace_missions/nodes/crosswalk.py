@@ -177,7 +177,7 @@ class CrosswalkMission:
 def main():
     try:
         node = CrosswalkMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

@@ -189,7 +189,7 @@ class IntersectionMission:
 def main():
     try:
         node = IntersectionMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

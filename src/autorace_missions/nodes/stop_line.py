@@ -164,7 +164,7 @@ class StopLineMission:
 def main():
     try:
         node = StopLineMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

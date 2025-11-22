@@ -165,7 +165,7 @@ class ObstacleAvoidanceMission:
 def main():
     try:
         node = ObstacleAvoidanceMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

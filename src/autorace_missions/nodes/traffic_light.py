@@ -163,7 +163,7 @@ class TrafficLightMission:
 def main():
     try:
         node = TrafficLightMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

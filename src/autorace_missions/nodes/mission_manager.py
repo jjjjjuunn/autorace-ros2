@@ -33,7 +33,7 @@ class MissionManager:
         
         # 현재 미션 상태
         try:
-            self.current_mission = MissionState[initial]
+            self.current_mission = MissionState[initial_mission.upper()]
         except KeyError:
             rospy.logwarn(f'Unknown mission: {initial}, starting with COLORED_LANE')
             self.current_mission = MissionState.COLORED_LANE
@@ -93,7 +93,7 @@ class MissionManager:
 def main():
     try:
         node = MissionManager()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

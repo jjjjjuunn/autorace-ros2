@@ -221,7 +221,7 @@ class ColoredLaneMission:
 def main():
     try:
         node = ColoredLaneMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 

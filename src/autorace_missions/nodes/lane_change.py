@@ -220,7 +220,7 @@ class LaneChangeMission:
 def main():
     try:
         node = LaneChangeMission()
-        node.run()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
 
