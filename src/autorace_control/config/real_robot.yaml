@@ -1,0 +1,48 @@
+# 실차 설정 파라미터
+
+/camera_node:
+  ros__parameters:
+    device_id: 0           # USB 카메라: /dev/video0
+    width: 640
+    height: 480
+    fps: 30
+    publish_compressed: false
+    calibration_file: ""   # 캘리브레이션 파일 경로
+
+/motor_controller:
+  ros__parameters:
+    max_linear_speed: 0.3      # 최대 직진 속도 (m/s)
+    max_angular_speed: 1.0     # 최대 회전 속도 (rad/s)
+    wheel_base: 0.16           # 차축 간격 (m)
+    wheel_radius: 0.033        # 바퀴 반지름 (m)
+
+# 미션 파라미터 (실차용 조정)
+/lane_following:
+  ros__parameters:
+    linear_speed: 0.12         # 실차는 더 느리게
+    angular_gain: 0.008        # 실차는 더 부드럽게
+
+/stop_line:
+  ros__parameters:
+    stop_duration: 3.0
+    detection_threshold: 0.4   # 실차는 더 확실하게
+
+/crosswalk:
+  ros__parameters:
+    slow_speed: 0.05
+    normal_speed: 0.12         # 실차 정상 속도
+
+/parking:
+  ros__parameters:
+    parking_speed: 0.06        # 주차는 천천히
+    reverse_speed: -0.06
+
+/tunnel:
+  ros__parameters:
+    tunnel_speed: 0.10
+    brightness_threshold: 60   # 실차 환경에 맞게 조정
+
+/intersection:
+  ros__parameters:
+    turn_speed: 0.08
+    turn_duration: 2.5         # 실차는 회전 시간 길게
