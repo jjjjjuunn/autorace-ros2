@@ -24,7 +24,7 @@ class MotorController:
         
         # Publisher: Ackermann 명령
         self.ackermann_pub = rospy.Publisher(
-            '/ackermann_cmd_mux/input/navigation',
+            '/low_level/ackermann_cmd_mux/input/navigation',
             AckermannDriveStamped,
             queue_size=1
         )

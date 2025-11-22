@@ -9,7 +9,7 @@
 import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, CompressedImage
 from cv_bridge import CvBridge
 import cv2
 import numpy as np
@@ -37,7 +37,7 @@ class ColoredLaneMission:
         
         # Subscriber
         rospy.Subscriber('/mission/current', String, self.mission_callback, queue_size=10)
-        rospy.Subscriber('/camera/image_raw', Image, self.image_callback, queue_size=10)
+        rospy.Subscriber('/usb_cam/image_raw/compressed', CompressedImage, self.image_callback, queue_size=10)
         
         # Publisher
         self.cmd_vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
@@ -67,7 +67,9 @@ class ColoredLaneMission:
             return
         
         try:
-            cv_image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
+            # Decompress image
+            np_arr = np.frombuffer(msg.data, np.uint8)
+            cv_image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
             
             # 차로 색깔 검출
             detected_color = self.detect_lane_color(cv_image)
