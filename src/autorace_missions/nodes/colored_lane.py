@@ -20,12 +20,11 @@ class ColoredLaneMission:
         rospy.init_node('colored_lane_mission', anonymous=False)
         
         # 파라미터
-        
-        self.debug_mode = rospy.get_param('~debug_mode', 0.1)
-        self.slow_speed = rospy.get_param('~slow_speed', 0.1)
+        self.debug_mode = rospy.get_param('~debug_mode', False)
+        self.slow_speed = rospy.get_param('~slow_speed', 0.05)
         self.normal_speed = rospy.get_param('~normal_speed', 0.1)
-        self.fast_speed = rospy.get_param('~fast_speed', 0.1)
-        self.angular_gain = rospy.get_param('~angular_gain', 0.1)
+        self.fast_speed = rospy.get_param('~fast_speed', 0.15)
+        self.angular_gain = rospy.get_param('~angular_gain', 0.001)  # 매우 중요!
         
         # 상태
         self.mission_active = False

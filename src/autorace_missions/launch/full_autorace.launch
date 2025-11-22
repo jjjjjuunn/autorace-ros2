@@ -19,7 +19,13 @@
   </node>
 
   <!-- Mission Nodes -->
-  <node pkg="autorace_missions" type="colored_lane.py" name="colored_lane" output="screen"/>
+  <node pkg="autorace_missions" type="colored_lane.py" name="colored_lane" output="screen">
+    <param name="debug_mode" value="false"/>
+    <param name="slow_speed" value="0.05"/>
+    <param name="normal_speed" value="0.1"/>
+    <param name="fast_speed" value="0.15"/>
+    <param name="angular_gain" value="0.001"/>
+  </node>
   <node pkg="autorace_missions" type="crosswalk.py" name="crosswalk" output="screen"/>
   <node pkg="autorace_missions" type="obstacle_avoidance.py" name="obstacle_avoidance" output="screen"/>
   <node pkg="autorace_missions" type="lane_change.py" name="lane_change" output="screen"/>
