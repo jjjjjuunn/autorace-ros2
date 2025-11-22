@@ -22,9 +22,9 @@ class MotorController:
         # Subscriber: cmd_vel (Twist)
         rospy.Subscriber('/cmd_vel', Twist, self.cmd_vel_callback, queue_size=1)
         
-        # Publisher: Ackermann 명령
+        # Publisher: Ackermann 명령 (ackermann_to_vesc_node로 직접 전송)
         self.ackermann_pub = rospy.Publisher(
-            '/low_level/ackermann_cmd_mux/input/navigation',
+            '/ackermann_cmd',
             AckermannDriveStamped,
             queue_size=1
         )
