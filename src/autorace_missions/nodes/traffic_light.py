@@ -162,16 +162,10 @@ class TrafficLightMission:
 
 def main():
     try:
-    node = TrafficLightMission()
-    
-    try:
+        node = TrafficLightMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

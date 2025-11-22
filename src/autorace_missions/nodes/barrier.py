@@ -226,16 +226,10 @@ class BarrierMission:
 
 def main():
     try:
-    node = BarrierMission()
-    
-    try:
+        node = BarrierMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

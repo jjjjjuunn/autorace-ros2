@@ -171,16 +171,10 @@ class TunnelMission:
 
 def main():
     try:
-    node = TunnelMission()
-    
-    try:
+        node = TunnelMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

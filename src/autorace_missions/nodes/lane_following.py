@@ -136,16 +136,10 @@ class LaneFollowingMission:
 
 def main():
     try:
-    node = LaneFollowingMission()
-    
-    try:
+        node = LaneFollowingMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

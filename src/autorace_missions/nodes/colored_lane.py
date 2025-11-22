@@ -220,16 +220,10 @@ class ColoredLaneMission:
 
 def main():
     try:
-    node = ColoredLaneMission()
-    
-    try:
+        node = ColoredLaneMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

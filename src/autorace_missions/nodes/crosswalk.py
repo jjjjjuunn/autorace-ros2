@@ -176,16 +176,10 @@ class CrosswalkMission:
 
 def main():
     try:
-    node = CrosswalkMission()
-    
-    try:
+        node = CrosswalkMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

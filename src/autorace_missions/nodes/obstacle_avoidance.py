@@ -164,16 +164,10 @@ class ObstacleAvoidanceMission:
 
 def main():
     try:
-    node = ObstacleAvoidanceMission()
-    
-    try:
+        node = ObstacleAvoidanceMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

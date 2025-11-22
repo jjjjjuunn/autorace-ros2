@@ -92,16 +92,10 @@ class MissionManager:
 
 def main():
     try:
-    node = MissionManager()
-    
-    try:
+        node = MissionManager()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

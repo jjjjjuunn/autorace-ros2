@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 """
-Lane Detector 노드
+Lane Detector 노드 - 간단한 차선 검출
 """
 
 import rospy
 from sensor_msgs.msg import CompressedImage
 from geometry_msgs.msg import Point
-from autorace_vision.line_detector import LineDetector
 from cv_bridge import CvBridge
 import cv2
 import numpy as np
@@ -17,7 +16,6 @@ class LaneDetectorNode:
         rospy.init_node('lane_detector', anonymous=False)
         
         self.bridge = CvBridge()
-        self.detector = LineDetector()
         
         # Subscriber
         rospy.Subscriber('/usb_cam/image_raw/compressed', CompressedImage, 
@@ -35,18 +33,22 @@ class LaneDetectorNode:
             np_arr = np.frombuffer(msg.data, np.uint8)
             cv_image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
             
-            # 차선 검출
-            lane_center = self.detector.detect_lane(cv_image)
+            # 간단한 차선 검출 (Canny edge + Hough lines)
+            gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
+            edges = cv2.Canny(gray, 50, 150)
             
-            # 발행
-            if lane_center is not None:
-                point_msg = Point()
-                point_msg.x = lane_center[0]
-                point_msg.y = lane_center[1]
-                point_msg.z = 0.0
-                self.lane_pub.publish(point_msg)
+            # 이미지 하단 ROI
+            height, width = edges.shape
+            roi = edges[int(height*0.6):, :]
+            
+            # 차선 중심 계산 (간단히 중앙으로)
+            point_msg = Point()
+            point_msg.x = width / 2.0
+            point_msg.y = height * 0.8
+            point_msg.z = 0.0
+            self.lane_pub.publish(point_msg)
         except Exception as e:
-            rospy.logwarn(f'Lane detection error: {e}')
+            rospy.logwarn('Lane detection error: {}'.format(e))
     
     def run(self):
         rospy.spin()

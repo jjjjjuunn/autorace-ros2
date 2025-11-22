@@ -188,16 +188,10 @@ class IntersectionMission:
 
 def main():
     try:
-    node = IntersectionMission()
-    
-    try:
+        node = IntersectionMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

@@ -235,16 +235,10 @@ class RoundaboutMission:
 
 def main():
     try:
-    node = RoundaboutMission()
-    
-    try:
+        node = RoundaboutMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

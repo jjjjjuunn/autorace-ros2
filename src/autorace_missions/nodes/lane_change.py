@@ -219,16 +219,10 @@ class LaneChangeMission:
 
 def main():
     try:
-    node = LaneChangeMission()
-    
-    try:
+        node = LaneChangeMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()

@@ -226,16 +226,10 @@ class ParkingMission:
 
 def main():
     try:
-    node = ParkingMission()
-    
-    try:
+        node = ParkingMission()
         node.run()
     except rospy.ROSInterruptException:
         pass
-    finally:
-        
-        pass
-
 
 if __name__ == '__main__':
     main()
