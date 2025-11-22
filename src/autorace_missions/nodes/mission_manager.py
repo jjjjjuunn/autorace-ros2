@@ -77,8 +77,8 @@ class MissionManager:
         else:
             rospy.loginfo('🏁 모든 미션 완료!')
     
-    def publish_state(self):
-        """현재 미션 상태 발행"""
+    def publish_state(self, event):
+        """현재 미션 상태 발행 (Timer callback)"""
         # String 메시지
         mission_msg = String()
         mission_msg.data = self.current_mission.name
