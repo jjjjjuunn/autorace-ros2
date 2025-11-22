@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Vision Detectors -->
+  <node pkg="autorace_vision" type="lane_detector.py" name="lane_detector" output="screen"/>
+  <node pkg="autorace_vision" type="traffic_light_detector.py" name="traffic_light_detector" output="screen"/>
+  <node pkg="autorace_vision" type="crosswalk_detector.py" name="crosswalk_detector" output="screen"/>
+  <node pkg="autorace_vision" type="obstacle_detector.py" name="obstacle_detector" output="screen"/>
+
+  <!-- Motor Controller -->
+  <node pkg="autorace_missions" type="motor_controller.py" name="motor_controller" output="screen">
+    <param name="wheel_base" value="0.25"/>
+    <param name="max_speed" value="1.0"/>
+    <param name="max_steering_angle" value="0.34"/>
+  </node>
+
+  <!-- Mission Manager -->
+  <node pkg="autorace_missions" type="mission_manager.py" name="mission_manager" output="screen">
+    <param name="initial_mission" value="colored_lane"/>
+  </node>
+
+  <!-- Mission Nodes -->
+  <node pkg="autorace_missions" type="colored_lane.py" name="colored_lane" output="screen"/>
+  <node pkg="autorace_missions" type="crosswalk.py" name="crosswalk" output="screen"/>
+  <node pkg="autorace_missions" type="obstacle_avoidance.py" name="obstacle_avoidance" output="screen"/>
+  <node pkg="autorace_missions" type="lane_change.py" name="lane_change" output="screen"/>
+  <node pkg="autorace_missions" type="roundabout.py" name="roundabout" output="screen"/>
+  <node pkg="autorace_missions" type="tunnel.py" name="tunnel" output="screen"/>
+  <node pkg="autorace_missions" type="barrier.py" name="barrier" output="screen"/>
+  <node pkg="autorace_missions" type="parking.py" name="parking" output="screen"/>
+  <node pkg="autorace_missions" type="intersection.py" name="intersection" output="screen"/>
+  <node pkg="autorace_missions" type="lane_following.py" name="lane_following" output="screen"/>
+  <node pkg="autorace_missions" type="stop_line.py" name="stop_line" output="screen"/>
+  <node pkg="autorace_missions" type="traffic_light.py" name="traffic_light" output="screen"/>
+
+</launch>
